@@ -64,9 +64,23 @@ public static class ItemExtension
     }
 }
 
-public class ItemUpdaterCommand
+public class ItemUpdateCommand
 {
-    public void Update(Item item)
+    public virtual  void Update(Item item)
+    {
+        item.ReduceQuality();
+        item.ReduceSellIn();
+
+        if (item.SellIn < 0)
+        {
+            item.ReduceQuality();
+        }
+    }
+}
+
+public class LegendaryUpdateCommand : ItemUpdateCommand
+{
+    public override void Update(Item item)
     {
         item.ReduceQuality();
         item.ReduceSellIn();
@@ -93,10 +107,18 @@ public class GildedRose(IList<Item> items)
     {
         if (item.IsNormalItem())
         {
-            var command = new ItemUpdaterCommand();
+            var command = new ItemUpdateCommand();
             command.Update(item);
             return;
         }
+
+        if (item.IsLegendary())
+        {
+            var command = new LegendaryUpdateCommand();
+            command.Update(item);
+            return;
+        }
+        
         
         if (item.IsAgedBrie() || item.IsBackstagePass())
         {
