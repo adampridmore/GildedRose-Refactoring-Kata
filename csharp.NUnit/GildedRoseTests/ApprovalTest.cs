@@ -96,7 +96,6 @@ public class ApprovalTest
     }
     
     [Test]
-    [Ignore("WIP")]
     public Task ConjuredItemThirtyDays()
     {
         var fakeOutput = new StringBuilder();

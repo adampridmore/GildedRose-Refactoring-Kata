@@ -32,10 +32,8 @@ public class GildedRoseTest
     }
 
     [Test]
-    [Ignore("TODO")]
     public void ConjouredItem()
     {
-        //Conjured Mana Cake, 3, 6
         var items = new List<Item>
         {
             new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }
