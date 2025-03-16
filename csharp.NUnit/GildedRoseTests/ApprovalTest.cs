@@ -1,6 +1,7 @@
 using GildedRoseKata;
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,23 @@ public class ApprovalTest
         Console.SetIn(new StringReader($"a{Environment.NewLine}"));
 
         Program.Main(new string[] { "30" });
+        var output = fakeOutput.ToString();
+
+        return Verifier.Verify(output);
+    }
+    
+    [Test]
+    public Task NormalItemThirtyDays()
+    {
+        var fakeOutput = new StringBuilder();
+        Console.SetOut(new StringWriter(fakeOutput));
+        Console.SetIn(new StringReader($"a{Environment.NewLine}"));
+
+        var items = new List<Item>
+        {
+            new Item { Name = "+5 Dexterity Vest", SellIn = 2, Quality = 5 }
+        };
+        Program.ProcessItems(items, 30);
         var output = fakeOutput.ToString();
 
         return Verifier.Verify(output);
