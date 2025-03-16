@@ -49,7 +49,7 @@ public static class ItemExtension
         {
             return;
         }
-        
+
         item.Quality++;
     }
     
@@ -92,6 +92,50 @@ public class LegendaryUpdateCommand : ItemUpdateCommand
     }
 }
 
+public class AgedBrieUpdateCommand : ItemUpdateCommand
+{
+    public override void Update(Item item)
+    {
+        item.IncreaseQuality();
+        item.ReduceSellIn();
+        
+        // TODO: This is a bug, but it's how it works...
+        // It's quality increases twice as fast when it's sellIn <0
+        if (item.SellIn < 0)
+        {
+            item.IncreaseQuality();
+        }
+    }
+}
+
+public class BackstagePassUpdateCommand : ItemUpdateCommand
+{
+    public override void Update(Item item)
+    {
+        item.ReduceSellIn();
+
+        if (item.SellIn < 0)
+        {
+            item.Quality = 0;
+        }
+        else if (item.SellIn < 5)
+        {
+            item.IncreaseQuality();
+            item.IncreaseQuality();
+            item.IncreaseQuality();
+        }
+        else if (item.SellIn < 10)
+        {
+            item.IncreaseQuality();
+            item.IncreaseQuality();
+        }
+        else
+        {
+            item.IncreaseQuality();
+        }
+    }
+}
+
 
 public class GildedRose(IList<Item> items)
 {
@@ -119,48 +163,18 @@ public class GildedRose(IList<Item> items)
             return;
         }
         
-        
-        if (item.IsAgedBrie() || item.IsBackstagePass())
+        if (item.IsAgedBrie())
         {
-            if (item.Quality < 50)
-            {
-                item.IncreaseQuality();
-
-                if (item.IsBackstagePass())
-                {
-                    if (item.SellIn < 11)
-                    {
-                        item.IncreaseQuality();
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        item.IncreaseQuality();
-                    }
-                }
-            }
-        }
-        else
-        {
-            item.ReduceQuality();
+            var command = new AgedBrieUpdateCommand();
+            command.Update(item);
+            return;
         }
 
-        item.ReduceSellIn();
-        
-        if (item.SellIn < 0)
+        if (item.IsBackstagePass())
         {
-            if (item.IsAgedBrie())
-            {
-                item.IncreaseQuality();
-            }
-            else if (item.IsBackstagePass())
-            {
-                item.Quality = 0;
-            }
-            else
-            {
-                item.ReduceQuality();
-            }
+            var command = new BackstagePassUpdateCommand();
+            command.Update(item);
+            return;
         }
     }
 }
