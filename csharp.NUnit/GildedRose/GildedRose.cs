@@ -2,18 +2,30 @@
 
 namespace GildedRoseKata;
 
-public class GildedRose
+public static class ItemExtension
 {
-    private readonly IList<Item> _items;
-
-    public GildedRose(IList<Item> items)
+    public static bool IsAgedBrie(this Item item)
     {
-        _items = items;
+        return item.Name == "Aged Brie";
     }
 
+    public static bool IsBackstagePass(this Item item)
+    {
+        return item.Name == "Backstage passes to a TAFKAL80ETC concert";
+    }
+
+    public static bool IsLegendaryItem(this Item item)
+    {
+        return item.Name == "Sulfuras, Hand of Ragnaros";
+    }
+}
+
+
+public class GildedRose(IList<Item> items)
+{
     public void UpdateQuality()
     {
-        foreach (var item in _items)
+        foreach (var item in items)
         {
             GildedRose.UpdateItem(item);
         }
@@ -21,11 +33,11 @@ public class GildedRose
 
     private static void UpdateItem(Item item)
     {
-        if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+        if (!item.IsAgedBrie() && !item.IsBackstagePass())
         {
             if (item.Quality > 0)
             {
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                if (!item.IsLegendaryItem())
                 {
                     item.Quality = item.Quality - 1;
                 }
@@ -37,7 +49,7 @@ public class GildedRose
             {
                 item.Quality = item.Quality + 1;
 
-                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                if (item.IsBackstagePass())
                 {
                     if (item.SellIn < 11)
                     {
@@ -58,20 +70,20 @@ public class GildedRose
             }
         }
 
-        if (item.Name != "Sulfuras, Hand of Ragnaros")
+        if (!item.IsLegendaryItem())
         {
             item.SellIn = item.SellIn - 1;
         }
 
         if (item.SellIn < 0)
         {
-            if (item.Name != "Aged Brie")
+            if (!item.IsAgedBrie())
             {
-                if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                if (!item.IsBackstagePass())
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != "Sulfuras, Hand of Ragnaros")
+                        if (!item.IsLegendaryItem())
                         {
                             item.Quality = item.Quality - 1;
                         }
