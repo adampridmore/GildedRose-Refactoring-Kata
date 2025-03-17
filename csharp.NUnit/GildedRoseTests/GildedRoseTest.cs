@@ -20,7 +20,6 @@ public class GildedRoseTest
     [Test]
     public void BasicItem()
     {
-        
         var items = new List<Item>
         {
             new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 }
