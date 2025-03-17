@@ -1,0 +1,120 @@
+﻿-------- day 0 --------
+name, sellIn, quality
++5 Dexterity Vest, 2, 5
+
+-------- day 1 --------
+name, sellIn, quality
++5 Dexterity Vest, 1, 4
+
+-------- day 2 --------
+name, sellIn, quality
++5 Dexterity Vest, 0, 3
+
+-------- day 3 --------
+name, sellIn, quality
++5 Dexterity Vest, -1, 1
+
+-------- day 4 --------
+name, sellIn, quality
++5 Dexterity Vest, -2, 0
+
+-------- day 5 --------
+name, sellIn, quality
++5 Dexterity Vest, -3, 0
+
+-------- day 6 --------
+name, sellIn, quality
++5 Dexterity Vest, -4, 0
+
+-------- day 7 --------
+name, sellIn, quality
++5 Dexterity Vest, -5, 0
+
+-------- day 8 --------
+name, sellIn, quality
++5 Dexterity Vest, -6, 0
+
+-------- day 9 --------
+name, sellIn, quality
++5 Dexterity Vest, -7, 0
+
+-------- day 10 --------
+name, sellIn, quality
++5 Dexterity Vest, -8, 0
+
+-------- day 11 --------
+name, sellIn, quality
++5 Dexterity Vest, -9, 0
+
+-------- day 12 --------
+name, sellIn, quality
++5 Dexterity Vest, -10, 0
+
+-------- day 13 --------
+name, sellIn, quality
++5 Dexterity Vest, -11, 0
+
+-------- day 14 --------
+name, sellIn, quality
++5 Dexterity Vest, -12, 0
+
+-------- day 15 --------
+name, sellIn, quality
++5 Dexterity Vest, -13, 0
+
+-------- day 16 --------
+name, sellIn, quality
++5 Dexterity Vest, -14, 0
+
+-------- day 17 --------
+name, sellIn, quality
++5 Dexterity Vest, -15, 0
+
+-------- day 18 --------
+name, sellIn, quality
++5 Dexterity Vest, -16, 0
+
+-------- day 19 --------
+name, sellIn, quality
++5 Dexterity Vest, -17, 0
+
+-------- day 20 --------
+name, sellIn, quality
++5 Dexterity Vest, -18, 0
+
+-------- day 21 --------
+name, sellIn, quality
++5 Dexterity Vest, -19, 0
+
+-------- day 22 --------
+name, sellIn, quality
++5 Dexterity Vest, -20, 0
+
+-------- day 23 --------
+name, sellIn, quality
++5 Dexterity Vest, -21, 0
+
+-------- day 24 --------
+name, sellIn, quality
++5 Dexterity Vest, -22, 0
+
+-------- day 25 --------
+name, sellIn, quality
++5 Dexterity Vest, -23, 0
+
+-------- day 26 --------
+name, sellIn, quality
++5 Dexterity Vest, -24, 0
+
+-------- day 27 --------
+name, sellIn, quality
++5 Dexterity Vest, -25, 0
+
+-------- day 28 --------
+name, sellIn, quality
++5 Dexterity Vest, -26, 0
+
+-------- day 29 --------
+name, sellIn, quality
++5 Dexterity Vest, -27, 0
+

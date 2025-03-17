@@ -20,4 +20,10 @@
     <ProjectReference Include="..\GildedRose\GildedRose.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ApprovalTest.NormalItemThirtyDays.verified.txt">
+      <DependentUpon>ApprovalTest.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+
 </Project>
