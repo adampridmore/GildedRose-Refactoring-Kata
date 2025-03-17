@@ -27,23 +27,13 @@ public class GildedRose(IList<Item> items)
     {
         foreach (var item in items)
         {
-            GildedRose.UpdateItem(item);
+            UpdateItem(item);
         }
     }
 
     private static void UpdateItem(Item item)
     {
-        if (!item.IsAgedBrie() && !item.IsBackstagePass())
-        {
-            if (item.Quality > 0)
-            {
-                if (!item.IsLegendaryItem())
-                {
-                    item.Quality = item.Quality - 1;
-                }
-            }
-        }
-        else
+        if (item.IsAgedBrie() || item.IsBackstagePass())
         {
             if (item.Quality < 50)
             {
@@ -69,6 +59,16 @@ public class GildedRose(IList<Item> items)
                 }
             }
         }
+        else
+        {
+            if (item.Quality > 0)
+            {
+                if (!item.IsLegendaryItem())
+                {
+                    item.Quality = item.Quality - 1;
+                }
+            }
+        }
 
         if (!item.IsLegendaryItem())
         {
@@ -79,7 +79,11 @@ public class GildedRose(IList<Item> items)
         {
             if (!item.IsAgedBrie())
             {
-                if (!item.IsBackstagePass())
+                if (item.IsBackstagePass())
+                {
+                    item.Quality = item.Quality - item.Quality;
+                }
+                else
                 {
                     if (item.Quality > 0)
                     {
@@ -88,10 +92,6 @@ public class GildedRose(IList<Item> items)
                             item.Quality = item.Quality - 1;
                         }
                     }
-                }
-                else
-                {
-                    item.Quality = item.Quality - item.Quality;
                 }
             }
             else
