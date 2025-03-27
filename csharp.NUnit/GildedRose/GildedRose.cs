@@ -22,13 +22,18 @@ public static class ItemExtension
 
     public static bool IsNormalItem(this Item item)
     {
-        if (item.IsAgedBrie() || item.IsBackstagePass() || item.IsLegendary())
+        if (item.IsAgedBrie() || item.IsBackstagePass() || item.IsLegendary() || item.IsConjured())
         {
             return false;
         }
 
         return true;
-    } 
+    }
+
+    public static bool IsConjured(this Item item)
+    {
+        return item.Name == "Conjured Mana Cake";
+    }
 
     public static void ReduceQuality(this Item item)
     {
@@ -61,7 +66,7 @@ public static class ItemExtension
 
 public abstract class ItemUpdateCommand(Item item)
 {
-    public abstract void UpdateQuality();
+    protected abstract void UpdateQuality();
     
     public static ItemUpdateCommand Create(Item item)
     {
@@ -85,6 +90,11 @@ public abstract class ItemUpdateCommand(Item item)
             return new BackstagePassUpdateCommand(item);
         }
 
+        if (item.IsConjured())
+        {
+            return new ConjuredUpdateCommand(item);
+        }
+
         throw new ApplicationException($"Unknown item type: {item.Name}");
     }
     
@@ -100,7 +110,7 @@ public abstract class ItemUpdateCommand(Item item)
 
 public class NormalItemUpdateCommand(Item item) : ItemUpdateCommand(item)
 {
-    public override void UpdateQuality()
+    protected override void UpdateQuality()
     {
         Item.ReduceQuality();
 
@@ -109,12 +119,11 @@ public class NormalItemUpdateCommand(Item item) : ItemUpdateCommand(item)
             Item.ReduceQuality();
         }
     }
-  
 }
 
 public class LegendaryUpdateCommand(Item item) : ItemUpdateCommand(item)
 {
-    public override void UpdateQuality()
+    protected override void UpdateQuality()
     {
 
     }
@@ -122,7 +131,7 @@ public class LegendaryUpdateCommand(Item item) : ItemUpdateCommand(item)
 
 public class AgedBrieUpdateCommand(Item item) : ItemUpdateCommand(item)
 {
-    public override void UpdateQuality()
+    protected override void UpdateQuality()
     {
         Item.IncreaseQuality();
 
@@ -137,7 +146,7 @@ public class AgedBrieUpdateCommand(Item item) : ItemUpdateCommand(item)
 
 public class BackstagePassUpdateCommand(Item item2) : ItemUpdateCommand(item2)
 {
-    public override void UpdateQuality()
+    protected override void UpdateQuality()
     {
         switch (Item.SellIn)
         {
@@ -154,6 +163,15 @@ public class BackstagePassUpdateCommand(Item item2) : ItemUpdateCommand(item2)
                 Item.IncreaseQuality(1);
                 break;
         }
+    }
+}
+
+public class ConjuredUpdateCommand(Item item) : ItemUpdateCommand(item)
+{
+    protected override void UpdateQuality()
+    {
+        Item.ReduceQuality();
+        Item.ReduceQuality();
     }
 }
 
