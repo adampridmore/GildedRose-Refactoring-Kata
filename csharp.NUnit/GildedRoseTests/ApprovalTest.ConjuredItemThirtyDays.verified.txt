@@ -1,0 +1,120 @@
+﻿-------- day 0 --------
+name, sellIn, quality
+Conjured Mana Cake, 3, 6
+
+-------- day 1 --------
+name, sellIn, quality
+Conjured Mana Cake, 2, 4
+
+-------- day 2 --------
+name, sellIn, quality
+Conjured Mana Cake, 1, 2
+
+-------- day 3 --------
+name, sellIn, quality
+Conjured Mana Cake, 0, 0
+
+-------- day 4 --------
+name, sellIn, quality
+Conjured Mana Cake, -1, 0
+
+-------- day 5 --------
+name, sellIn, quality
+Conjured Mana Cake, -2, 0
+
+-------- day 6 --------
+name, sellIn, quality
+Conjured Mana Cake, -3, 0
+
+-------- day 7 --------
+name, sellIn, quality
+Conjured Mana Cake, -4, 0
+
+-------- day 8 --------
+name, sellIn, quality
+Conjured Mana Cake, -5, 0
+
+-------- day 9 --------
+name, sellIn, quality
+Conjured Mana Cake, -6, 0
+
+-------- day 10 --------
+name, sellIn, quality
+Conjured Mana Cake, -7, 0
+
+-------- day 11 --------
+name, sellIn, quality
+Conjured Mana Cake, -8, 0
+
+-------- day 12 --------
+name, sellIn, quality
+Conjured Mana Cake, -9, 0
+
+-------- day 13 --------
+name, sellIn, quality
+Conjured Mana Cake, -10, 0
+
+-------- day 14 --------
+name, sellIn, quality
+Conjured Mana Cake, -11, 0
+
+-------- day 15 --------
+name, sellIn, quality
+Conjured Mana Cake, -12, 0
+
+-------- day 16 --------
+name, sellIn, quality
+Conjured Mana Cake, -13, 0
+
+-------- day 17 --------
+name, sellIn, quality
+Conjured Mana Cake, -14, 0
+
+-------- day 18 --------
+name, sellIn, quality
+Conjured Mana Cake, -15, 0
+
+-------- day 19 --------
+name, sellIn, quality
+Conjured Mana Cake, -16, 0
+
+-------- day 20 --------
+name, sellIn, quality
+Conjured Mana Cake, -17, 0
+
+-------- day 21 --------
+name, sellIn, quality
+Conjured Mana Cake, -18, 0
+
+-------- day 22 --------
+name, sellIn, quality
+Conjured Mana Cake, -19, 0
+
+-------- day 23 --------
+name, sellIn, quality
+Conjured Mana Cake, -20, 0
+
+-------- day 24 --------
+name, sellIn, quality
+Conjured Mana Cake, -21, 0
+
+-------- day 25 --------
+name, sellIn, quality
+Conjured Mana Cake, -22, 0
+
+-------- day 26 --------
+name, sellIn, quality
+Conjured Mana Cake, -23, 0
+
+-------- day 27 --------
+name, sellIn, quality
+Conjured Mana Cake, -24, 0
+
+-------- day 28 --------
+name, sellIn, quality
+Conjured Mana Cake, -25, 0
+
+-------- day 29 --------
+name, sellIn, quality
+Conjured Mana Cake, -26, 0
+
