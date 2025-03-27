@@ -59,89 +59,103 @@ public static class ItemExtension
     }
 }
 
-public class ItemUpdateCommand
+public abstract class ItemUpdateCommand(Item item)
 {
-    public virtual void UpdateQuality(Item item)
-    {
-        item.ReduceQuality();
-
-        if (item.SellIn < 0)
-        {
-            item.ReduceQuality();
-        }
-    }
-
+    public abstract void UpdateQuality();
+    
     public static ItemUpdateCommand Create(Item item)
     {
         if (item.IsNormalItem())
         {
-            return new ItemUpdateCommand();
+            return new NormalItemUpdateCommand(item);
         }
 
         if (item.IsLegendary())
         {
-            return new LegendaryUpdateCommand();
+            return new LegendaryUpdateCommand(item);
         }
 
         if (item.IsAgedBrie())
         {
-            return new AgedBrieUpdateCommand();
+            return new AgedBrieUpdateCommand(item);
         }
 
         if (item.IsBackstagePass())
         {
-            return new BackstagePassUpdateCommand();
+            return new BackstagePassUpdateCommand(item);
         }
 
         throw new ApplicationException($"Unknown item type: {item.Name}");
     }
+    
+    protected Item Item { get; } = item;
+
+    public void Update()
+    {
+        item.ReduceSellIn();
+        
+        UpdateQuality();
+    }
 }
 
-public class LegendaryUpdateCommand : ItemUpdateCommand
+public class NormalItemUpdateCommand(Item item) : ItemUpdateCommand(item)
 {
-    public override void UpdateQuality(Item item)
+    public override void UpdateQuality()
+    {
+        Item.ReduceQuality();
+
+        if (Item.SellIn < 0)
+        {
+            Item.ReduceQuality();
+        }
+    }
+  
+}
+
+public class LegendaryUpdateCommand(Item item) : ItemUpdateCommand(item)
+{
+    public override void UpdateQuality()
     {
 
     }
 }
 
-public class AgedBrieUpdateCommand : ItemUpdateCommand
+public class AgedBrieUpdateCommand(Item item) : ItemUpdateCommand(item)
 {
-    public override void UpdateQuality(Item item)
+    public override void UpdateQuality()
     {
-        item.IncreaseQuality();
+        Item.IncreaseQuality();
 
-        // TODO: This is a bug, but it's how it works...
-        // It's quality increases twice as fast when it's sellIn <0
-        if (item.SellIn < 0)
+        // This is a bug, but it's how it works...
+        // It's quality increases twice as fast when it's sellIn < 0
+        if (Item.SellIn < 0)
         {
-            item.IncreaseQuality();
+            Item.IncreaseQuality();
         }
     }
 }
 
-public class BackstagePassUpdateCommand : ItemUpdateCommand
+public class BackstagePassUpdateCommand(Item item2) : ItemUpdateCommand(item2)
 {
-    public override void UpdateQuality(Item item)
+    public override void UpdateQuality()
     {
-        switch (item.SellIn)
+        switch (Item.SellIn)
         {
             case < 0:
-                item.Quality = 0;
+                Item.Quality = 0;
                 break;
             case < 5:
-                item.IncreaseQuality(3);
+                Item.IncreaseQuality(3);
                 break;
             case < 10:
-                item.IncreaseQuality(2);
+                Item.IncreaseQuality(2);
                 break;
             default:
-                item.IncreaseQuality(1);
+                Item.IncreaseQuality(1);
                 break;
         }
     }
 }
-
 
 public class GildedRose(IList<Item> items)
 {
@@ -149,15 +163,9 @@ public class GildedRose(IList<Item> items)
     {
         foreach (var item in items)
         {
-            UpdateItem(item);
+            ItemUpdateCommand
+                .Create(item)
+                .Update();
         }
-    }
-
-    private static void UpdateItem(Item item)
-    {
-        item.ReduceSellIn();
-        
-        var command = ItemUpdateCommand.Create(item);
-        command.UpdateQuality(item);
     }
 }
