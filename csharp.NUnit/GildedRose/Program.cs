@@ -7,6 +7,9 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        
+        
+        
         Console.WriteLine("OMGHAI!");
 
         IList<Item> items = new List<Item>
@@ -38,13 +41,18 @@ public class Program
             new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
         };
 
-        var app = new GildedRose(items);
-
         int days = 2;
         if (args.Length > 0)
         {
             days = int.Parse(args[0]) + 1;
         }
+        
+        ProcessItems(items, days);
+    }
+
+    public static void ProcessItems(IList<Item> items, int days)
+    {
+        var app = new GildedRose(items);
 
         for (var i = 0; i < days; i++)
         {

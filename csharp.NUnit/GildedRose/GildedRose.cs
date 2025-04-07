@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 
 namespace GildedRoseKata;
 
@@ -14,9 +15,66 @@ public static class ItemExtension
         return item.Name == "Backstage passes to a TAFKAL80ETC concert";
     }
 
-    public static bool IsLegendaryItem(this Item item)
+    public static bool IsLegendary(this Item item)
     {
         return item.Name == "Sulfuras, Hand of Ragnaros";
+    }
+
+    public static bool IsNormalItem(this Item item)
+    {
+        if (item.IsAgedBrie() || item.IsBackstagePass() || item.IsLegendary())
+        {
+            return false;
+        }
+
+        return true;
+    } 
+
+    public static void ReduceQuality(this Item item)
+    {
+        if (item.IsLegendary())
+        {
+            return;
+        }
+        
+        if (item.Quality > 0)
+        {
+            item.Quality--;
+        }
+    }
+
+    public static void IncreaseQuality(this Item item)
+    {
+        if (item.Quality >= 50)
+        {
+            return;
+        }
+        
+        item.Quality++;
+    }
+    
+    public static void ReduceSellIn(this Item item)
+    {
+        if (item.IsLegendary())
+        {
+            return;
+        }
+
+        item.SellIn--;
+    }
+}
+
+public class ItemUpdaterCommand
+{
+    public void Update(Item item)
+    {
+        item.ReduceQuality();
+        item.ReduceSellIn();
+
+        if (item.SellIn < 0)
+        {
+            item.ReduceQuality();
+        }
     }
 }
 
@@ -33,73 +91,53 @@ public class GildedRose(IList<Item> items)
 
     private static void UpdateItem(Item item)
     {
+        if (item.IsNormalItem())
+        {
+            var command = new ItemUpdaterCommand();
+            command.Update(item);
+            return;
+        }
+        
         if (item.IsAgedBrie() || item.IsBackstagePass())
         {
             if (item.Quality < 50)
             {
-                item.Quality = item.Quality + 1;
+                item.IncreaseQuality();
 
                 if (item.IsBackstagePass())
                 {
                     if (item.SellIn < 11)
                     {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
+                        item.IncreaseQuality();
                     }
 
                     if (item.SellIn < 6)
                     {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
+                        item.IncreaseQuality();
                     }
                 }
             }
         }
         else
         {
-            if (item.Quality > 0)
-            {
-                if (!item.IsLegendaryItem())
-                {
-                    item.Quality = item.Quality - 1;
-                }
-            }
+            item.ReduceQuality();
         }
 
-        if (!item.IsLegendaryItem())
-        {
-            item.SellIn = item.SellIn - 1;
-        }
-
+        item.ReduceSellIn();
+        
         if (item.SellIn < 0)
         {
-            if (!item.IsAgedBrie())
+            if (item.IsAgedBrie())
             {
-                if (item.IsBackstagePass())
-                {
-                    item.Quality = item.Quality - item.Quality;
-                }
-                else
-                {
-                    if (item.Quality > 0)
-                    {
-                        if (!item.IsLegendaryItem())
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
-                }
+                item.IncreaseQuality();
+            }
+            else if (item.IsBackstagePass())
+            {
+                item.Quality = 0;
             }
             else
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-                }
+                item.ReduceQuality();
             }
         }
     }
