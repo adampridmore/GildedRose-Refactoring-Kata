@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GildedRoseKata;
 
@@ -32,25 +32,20 @@ public static class ItemExtension
 
     public static void ReduceQuality(this Item item)
     {
-        if (item.IsLegendary())
-        {
-            return;
-        }
-        
         if (item.Quality > 0)
         {
             item.Quality--;
         }
     }
 
-    public static void IncreaseQuality(this Item item)
+    public static void IncreaseQuality(this Item item, int amount = 1)
     {
-        if (item.Quality >= 50)
+        item.Quality+=amount;
+        
+        if (item.Quality > 50)
         {
-            return;
+            item.Quality = 50;
         }
-
-        item.Quality++;
     }
     
     public static void ReduceSellIn(this Item item)
@@ -66,39 +61,56 @@ public static class ItemExtension
 
 public class ItemUpdateCommand
 {
-    public virtual  void Update(Item item)
+    public virtual void UpdateQuality(Item item)
     {
         item.ReduceQuality();
-        item.ReduceSellIn();
 
         if (item.SellIn < 0)
         {
             item.ReduceQuality();
         }
+    }
+
+    public static ItemUpdateCommand Create(Item item)
+    {
+        if (item.IsNormalItem())
+        {
+            return new ItemUpdateCommand();
+        }
+
+        if (item.IsLegendary())
+        {
+            return new LegendaryUpdateCommand();
+        }
+
+        if (item.IsAgedBrie())
+        {
+            return new AgedBrieUpdateCommand();
+        }
+
+        if (item.IsBackstagePass())
+        {
+            return new BackstagePassUpdateCommand();
+        }
+
+        throw new ApplicationException($"Unknown item type: {item.Name}");
     }
 }
 
 public class LegendaryUpdateCommand : ItemUpdateCommand
 {
-    public override void Update(Item item)
+    public override void UpdateQuality(Item item)
     {
-        item.ReduceQuality();
-        item.ReduceSellIn();
 
-        if (item.SellIn < 0)
-        {
-            item.ReduceQuality();
-        }
     }
 }
 
 public class AgedBrieUpdateCommand : ItemUpdateCommand
 {
-    public override void Update(Item item)
+    public override void UpdateQuality(Item item)
     {
         item.IncreaseQuality();
-        item.ReduceSellIn();
-        
+
         // TODO: This is a bug, but it's how it works...
         // It's quality increases twice as fast when it's sellIn <0
         if (item.SellIn < 0)
@@ -110,28 +122,22 @@ public class AgedBrieUpdateCommand : ItemUpdateCommand
 
 public class BackstagePassUpdateCommand : ItemUpdateCommand
 {
-    public override void Update(Item item)
+    public override void UpdateQuality(Item item)
     {
-        item.ReduceSellIn();
-
-        if (item.SellIn < 0)
+        switch (item.SellIn)
         {
-            item.Quality = 0;
-        }
-        else if (item.SellIn < 5)
-        {
-            item.IncreaseQuality();
-            item.IncreaseQuality();
-            item.IncreaseQuality();
-        }
-        else if (item.SellIn < 10)
-        {
-            item.IncreaseQuality();
-            item.IncreaseQuality();
-        }
-        else
-        {
-            item.IncreaseQuality();
+            case < 0:
+                item.Quality = 0;
+                break;
+            case < 5:
+                item.IncreaseQuality(3);
+                break;
+            case < 10:
+                item.IncreaseQuality(2);
+                break;
+            default:
+                item.IncreaseQuality(1);
+                break;
         }
     }
 }
@@ -149,32 +155,9 @@ public class GildedRose(IList<Item> items)
 
     private static void UpdateItem(Item item)
     {
-        if (item.IsNormalItem())
-        {
-            var command = new ItemUpdateCommand();
-            command.Update(item);
-            return;
-        }
-
-        if (item.IsLegendary())
-        {
-            var command = new LegendaryUpdateCommand();
-            command.Update(item);
-            return;
-        }
+        item.ReduceSellIn();
         
-        if (item.IsAgedBrie())
-        {
-            var command = new AgedBrieUpdateCommand();
-            command.Update(item);
-            return;
-        }
-
-        if (item.IsBackstagePass())
-        {
-            var command = new BackstagePassUpdateCommand();
-            command.Update(item);
-            return;
-        }
+        var command = ItemUpdateCommand.Create(item);
+        command.UpdateQuality(item);
     }
 }
