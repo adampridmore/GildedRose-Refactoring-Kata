@@ -24,6 +24,15 @@
     <None Update="ApprovalTest.NormalItemThirtyDays.verified.txt">
       <DependentUpon>ApprovalTest.cs</DependentUpon>
     </None>
+    <None Update="ApprovalTest.AgesBrieItemThirtyDays.verified.txt">
+      <DependentUpon>ApprovalTest.cs</DependentUpon>
+    </None>
+    <None Update="ApprovalTest.BackstagePassThirtyDays.verified.txt">
+      <DependentUpon>ApprovalTest.cs</DependentUpon>
+    </None>
+    <None Update="ApprovalTest.ConjuredItemThirtyDays.verified.txt">
+      <DependentUpon>ApprovalTest.cs</DependentUpon>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,120 @@
+﻿-------- day 0 --------
+name, sellIn, quality
+Aged Brie, 10, 20
+
+-------- day 1 --------
+name, sellIn, quality
+Aged Brie, 9, 21
+
+-------- day 2 --------
+name, sellIn, quality
+Aged Brie, 8, 22
+
+-------- day 3 --------
+name, sellIn, quality
+Aged Brie, 7, 23
+
+-------- day 4 --------
+name, sellIn, quality
+Aged Brie, 6, 24
+
+-------- day 5 --------
+name, sellIn, quality
+Aged Brie, 5, 25
+
+-------- day 6 --------
+name, sellIn, quality
+Aged Brie, 4, 26
+
+-------- day 7 --------
+name, sellIn, quality
+Aged Brie, 3, 27
+
+-------- day 8 --------
+name, sellIn, quality
+Aged Brie, 2, 28
+
+-------- day 9 --------
+name, sellIn, quality
+Aged Brie, 1, 29
+
+-------- day 10 --------
+name, sellIn, quality
+Aged Brie, 0, 30
+
+-------- day 11 --------
+name, sellIn, quality
+Aged Brie, -1, 32
+
+-------- day 12 --------
+name, sellIn, quality
+Aged Brie, -2, 34
+
+-------- day 13 --------
+name, sellIn, quality
+Aged Brie, -3, 36
+
+-------- day 14 --------
+name, sellIn, quality
+Aged Brie, -4, 38
+
+-------- day 15 --------
+name, sellIn, quality
+Aged Brie, -5, 40
+
+-------- day 16 --------
+name, sellIn, quality
+Aged Brie, -6, 42
+
+-------- day 17 --------
+name, sellIn, quality
+Aged Brie, -7, 44
+
+-------- day 18 --------
+name, sellIn, quality
+Aged Brie, -8, 46
+
+-------- day 19 --------
+name, sellIn, quality
+Aged Brie, -9, 48
+
+-------- day 20 --------
+name, sellIn, quality
+Aged Brie, -10, 50
+
+-------- day 21 --------
+name, sellIn, quality
+Aged Brie, -11, 50
+
+-------- day 22 --------
+name, sellIn, quality
+Aged Brie, -12, 50
+
+-------- day 23 --------
+name, sellIn, quality
+Aged Brie, -13, 50
+
+-------- day 24 --------
+name, sellIn, quality
+Aged Brie, -14, 50
+
+-------- day 25 --------
+name, sellIn, quality
+Aged Brie, -15, 50
+
+-------- day 26 --------
+name, sellIn, quality
+Aged Brie, -16, 50
+
+-------- day 27 --------
+name, sellIn, quality
+Aged Brie, -17, 50
+
+-------- day 28 --------
+name, sellIn, quality
+Aged Brie, -18, 50
+
+-------- day 29 --------
+name, sellIn, quality
+Aged Brie, -19, 50
+

@@ -1,0 +1,120 @@
+﻿-------- day 0 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 1 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 2 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 3 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 4 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 5 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 6 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 7 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 8 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 9 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 10 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 11 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 12 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 13 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 14 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 15 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 16 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 17 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 18 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 19 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 20 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 21 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 22 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 23 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 24 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 25 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 26 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 27 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 28 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
+-------- day 29 --------
+name, sellIn, quality
+Sulfuras, Hand of Ragnaros, 0, 80
+
