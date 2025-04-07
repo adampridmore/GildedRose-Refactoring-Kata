@@ -4,6 +4,8 @@ namespace GildedRoseKata;
 
 public abstract class ItemUpdateCommand(Item item)
 {
+    protected Item Item { get; } = item;
+    
     public static ItemUpdateCommand CreateCommand(Item item)
     {
         return item.Name switch
@@ -15,19 +17,19 @@ public abstract class ItemUpdateCommand(Item item)
             _ => new NormalItemUpdateCommand(item)
         };
     }
+    
+    public void Update()
+    {
+        UpdateSellIn();
+        
+        UpdateQuality();
+    }
+    
     protected abstract void UpdateQuality();
 
     protected virtual void UpdateSellIn()
     {
         ReduceSellIn();
-    }
-    
-    protected Item Item { get; } = item;
-
-    public void Update()
-    {
-        UpdateSellIn();
-        UpdateQuality();
     }
     
     protected void ReduceQuality()
@@ -38,6 +40,11 @@ public abstract class ItemUpdateCommand(Item item)
         }
     }
     
+    private void ReduceSellIn()
+    {
+        Item.SellIn--;
+    }
+    
     protected void IncreaseQuality(int amount = 1)
     {
         Item.Quality+=amount;
@@ -46,10 +53,5 @@ public abstract class ItemUpdateCommand(Item item)
         {
             Item.Quality = 50;
         }
-    }
-    
-    private void ReduceSellIn()
-    {
-        Item.SellIn--;
     }
 }

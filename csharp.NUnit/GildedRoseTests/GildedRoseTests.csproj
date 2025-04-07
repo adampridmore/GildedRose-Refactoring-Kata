@@ -33,6 +33,9 @@
     <None Update="ApprovalTest.ConjuredItemThirtyDays.verified.txt">
       <DependentUpon>ApprovalTest.cs</DependentUpon>
     </None>
+    <None Update="ApprovalTest.NormalItemDays.received.txt">
+      <DependentUpon>GildedRoseTest.cs</DependentUpon>
+    </None>
   </ItemGroup>
 
 </Project>
